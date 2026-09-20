@@ -1,0 +1,48 @@
+
+STUDY NOIR — VERSÃO CELULAR
+===========================
+
+Esta versão foi feita como PWA (Progressive Web App), otimizada para celular.
+Ela funciona como app instalado: abre em tela própria, salva seu progresso no aparelho
+e continua funcionando offline depois da primeira abertura.
+
+O que já tem:
+- Dashboard com contagem regressiva para Fisio (28/09/2026) e Pato (06/10/2026)
+- Cronograma Fisio + Pato
+- Marcação de tarefas concluídas
+- Inclusão de novas tarefas
+- Modo História / Dark Academy
+- Conteúdo inicial de Patologia e Fisiologia
+- Quiz com XP
+- Mapa de erros
+- Pomodoro 25/15/5 min
+- Anotação rápida
+- Dados salvos no próprio aparelho
+
+COMO USAR NO ANDROID COMO APP INSTALADO
+---------------------------------------
+Uma PWA precisa ser aberta por um endereço HTTPS para o Android oferecer "Instalar app".
+A pasta inteira pode ser publicada em qualquer hospedagem estática, por exemplo:
+- GitHub Pages
+- Netlify
+- Cloudflare Pages
+- Hostinger
+
+Depois:
+1. Abra o endereço pelo Chrome no Android.
+2. Toque em "Instalar" no topo do próprio Study Noir, se aparecer.
+   Ou use o menu ⋮ do Chrome > "Adicionar à tela inicial" / "Instalar app".
+3. O Study Noir aparecerá na tela inicial como um aplicativo.
+
+TESTE NO COMPUTADOR
+-------------------
+Na pasta do projeto, rode:
+  python -m http.server 8000
+e abra:
+  http://localhost:8000
+
+IMPORTANTE
+----------
+Se abrir index.html diretamente como arquivo, a interface funciona,
+mas o modo instalável/offline pode não ativar porque navegadores exigem HTTPS ou localhost
+para Service Worker/PWA.

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#171019" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Study Noir — Melissa</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">STUDY NOIR</div>
+        <h1>Oi, Melissa 🖤</h1>
+        <p id="headerSubtitle">Seu plano de Fisio + Pato</p>
+      </div>
+      <button id="installBtn" class="ghost hidden">Instalar</button>
+    </header>
+
+    <main>
+      <section id="home" class="screen active">
+        <div class="hero">
+          <div>
+            <span class="pill">MISSÃO ATUAL</span>
+            <h2 id="heroTitle">Carregando...</h2>
+            <p id="heroText"></p>
+          </div>
+          <div class="hero-mark">✦</div>
+        </div>
+
+        <div class="exam-grid">
+          <article class="card exam-card">
+            <div class="card-top">
+              <span>🫀 Fisiologia</span>
+              <span class="badge">P1</span>
+            </div>
+            <div class="count" id="fisioDays">—</div>
+            <small>Prova • 28/09/2026</small>
+          </article>
+          <article class="card exam-card">
+            <div class="card-top">
+              <span>🔬 Patologia</span>
+              <span class="badge">P1</span>
+            </div>
+            <div class="count" id="patoDays">—</div>
+            <small>Prova • 06/10/2026</small>
+          </article>
+        </div>
+
+        <article class="card">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">HOJE</span>
+              <h3>Missões do dia</h3>
+            </div>
+            <span id="todayProgress" class="mini-progress">0/0</span>
+          </div>
+          <div id="todayTasks" class="task-list"></div>
+        </article>
+
+        <article class="card">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">PROGRESSO</span>
+              <h3>Até as provas</h3>
+            </div>
+            <strong id="overallPct">0%</strong>
+          </div>
+          <div class="progress-track"><div id="overallBar" class="progress-bar"></div></div>
+          <p class="muted" id="nextFocus">Próximo foco...</p>
+        </article>
+
+        <article class="quote-card">
+          <div class="quote-mark">“</div>
+          <p id="dailyLine">Você não precisa decorar a história. Precisa entender por que ela aconteceu.</p>
+        </article>
+      </section>
+
+      <section id="schedule" class="screen">
+        <div class="screen-heading">
+          <span class="eyebrow">CRONOGRAMA</span>
+          <h2>Seu plano de guerra</h2>
+          <p>Fisio primeiro, Pato sempre viva. Depois da P1 de Fisio, Patologia assume o trono. 👑</p>
+        </div>
+        <div class="segmented">
+          <button class="seg active" data-filter="all">Tudo</button>
+          <button class="seg" data-filter="Fisiologia Animal II">Fisio</button>
+          <button class="seg" data-filter="Patologia Geral Veterinária">Pato</button>
+        </div>
+        <div id="scheduleList" class="timeline"></div>
+        <button id="addTaskBtn" class="fab" aria-label="Adicionar tarefa">+</button>
+      </section>
+
+      <section id="learn" class="screen">
+        <div class="screen-heading">
+          <span class="eyebrow">DARK ACADEMY MODE</span>
+          <h2>Aprender como história</h2>
+          <p>Primeiro o drama. Depois a linguagem da prova. 🖤</p>
+        </div>
+        <div class="subject-switch">
+          <button class="subject-chip active" data-subject="pato">🔬 Patologia</button>
+          <button class="subject-chip" data-subject="fisio">🫀 Fisiologia</button>
+        </div>
+        <div id="chapterList" class="chapter-grid"></div>
+      </section>
+
+      <section id="quiz" class="screen">
+        <div class="screen-heading">
+          <span class="eyebrow">QUIZ HARD</span>
+          <h2>Prova contra você mesma 😈</h2>
+          <p>Acertou, soma XP. Errou, entra no mapa de erros.</p>
+        </div>
+        <article class="card quiz-card">
+          <div class="quiz-meta">
+            <span id="quizSubject" class="pill">Patologia</span>
+            <span id="xpLabel">0 XP</span>
+          </div>
+          <h3 id="questionText">Carregando questão...</h3>
+          <div id="answers" class="answers"></div>
+          <div id="feedback" class="feedback hidden"></div>
+          <button id="nextQuestionBtn" class="primary hidden">Próxima questão</button>
+        </article>
+        <article class="card">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">MAPA DE ERROS</span>
+              <h3>O que precisa voltar</h3>
+            </div>
+            <button id="clearErrors" class="text-btn">Limpar</button>
+          </div>
+          <div id="errorMap" class="error-map"></div>
+        </article>
+      </section>
+
+      <section id="focus" class="screen">
+        <div class="screen-heading">
+          <span class="eyebrow">FOCO</span>
+          <h2>Pomodoro Noir</h2>
+          <p>25 minutos. Uma missão. Zero culpa.</p>
+        </div>
+        <article class="timer-card">
+          <div class="moon">◐</div>
+          <div id="timerDisplay" class="timer">25:00</div>
+          <div class="timer-presets">
+            <button data-min="25" class="preset active">25 min</button>
+            <button data-min="15" class="preset">15 min</button>
+            <button data-min="5" class="preset">5 min</button>
+          </div>
+          <button id="timerToggle" class="primary">Começar</button>
+          <button id="timerReset" class="ghost">Reiniciar</button>
+        </article>
+        <article class="card">
+          <span class="eyebrow">ANOTAÇÃO RÁPIDA</span>
+          <textarea id="quickNote" placeholder="Ex.: Confundi hiperemia com congestão..."></textarea>
+          <button id="saveNote" class="primary">Salvar nota</button>
+          <p id="noteSaved" class="muted"></p>
+        </article>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-target="home"><span>⌂</span><small>Início</small></button>
+      <button class="nav-item" data-target="schedule"><span>☷</span><small>Plano</small></button>
+      <button class="nav-item" data-target="learn"><span>✦</span><small>História</small></button>
+      <button class="nav-item" data-target="quiz"><span>?</span><small>Quiz</small></button>
+      <button class="nav-item" data-target="focus"><span>◷</span><small>Foco</small></button>
+    </nav>
+  </div>
+
+  <dialog id="chapterDialog">
+    <button class="dialog-close" id="closeChapter">×</button>
+    <div id="chapterContent"></div>
+  </dialog>
+
+  <dialog id="taskDialog">
+    <button class="dialog-close" id="closeTask">×</button>
+    <div class="modal-content">
+      <span class="eyebrow">NOVA MISSÃO</span>
+      <h2>Adicionar estudo</h2>
+      <label>Data<input id="newDate" type="date"></label>
+      <label>Matéria
+        <select id="newSubject">
+          <option>Fisiologia Animal II</option>
+          <option>Patologia Geral Veterinária</option>
+        </select>
+      </label>
+      <label>Conteúdo<input id="newTopic" type="text" placeholder="O que você vai estudar?"></label>
+      <label>Prioridade
+        <select id="newPriority">
+          <option>Baixa</option>
+          <option selected>Média</option>
+          <option>Alta</option>
+          <option>Urgente</option>
+        </select>
+      </label>
+      <button id="saveTask" class="primary">Salvar missão</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
